@@ -1,0 +1,88 @@
+﻿
+@model CleaningAppDemoViewModel
+@using CleaningAppDemo.DataAccess.Models
+@{
+    string pageType = Model.CurrentCleaningAppDemo.AppointmentId > 0 ? "Update Appointment" : "Create Appointment";
+
+    ViewData["Title"] = $"CleaningAppDemo | {pageType}";
+}
+
+<form action="~/CleaningAppDemo/Index" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Name: </label>
+                <input type="text" class="form-control" name="Name" value="@Model.CurrentCleaningAppDemo.Name" />
+            </div>
+        </div>
+        <div class="form-row">
+
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Phone: </label>
+                <input type="tel" class="form-control" name="Phone" value="@Model.CurrentCleaningAppDemo.Phone" />
+            </div>  
+
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Email: </label>
+                <input type="text" class="form-control" name="Email" value="@Model.CurrentCleaningAppDemo.Email" />
+            </div>
+
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>ClientAddress: </label>
+                <input type="text" class="form-control" name="ClientAddress" value="@Model.CurrentCleaningAppDemo.ClientAddress" />
+            </div> 
+            
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>DestinationAddress: </label>
+                <input type="text" class="form-control" name="DestinationAddress" value="@Model.CurrentCleaningAppDemo.DestinationAddress" />
+            </div>  
+
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Appointment: </label>
+                <input type="DateTime" class="form-control" name="Appointment" value="@Model.CurrentCleaningAppDemo.Appointment" />
+            </div> 
+
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>EstimatedTimeToComplete: </label>
+                <input type="number" class="form-control" name="EstimatedTimeToComplete" value="@Model.CurrentCleaningAppDemo.EstimatedTimeToComplete" />
+            </div>
+
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Mileage: </label>
+                <input type="number" class="form-control" name="Mileage" value="@Model.CurrentCleaningAppDemo.Mileage" />
+            </div> 
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Notes: </label>
+                <input type="text" class="form-control" name="Notes" value="@Model.CurrentCleaningAppDemo.Notes" />
+            </div>
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>DepartureTime: </label>
+                <input type="DateTime" class="form-control" name="DepartureTime" value="@Model.CurrentCleaningAppDemo.DepartureTime" />
+            </div> 
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>ArrivalTime: </label>
+                <input type="DateTime" class="form-control" name="ArrivalTime" value="@Model.CurrentCleaningAppDemo.ArrivalTime" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>NumberOfRooms: </label>
+            <input type="number" class="form-control" name="NumberOfRooms" value="@Model.CurrentCleaningAppDemo.NumberOfRooms" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/CleaningAppDemo/Index'">CANCEL</button>
+                <button type="submit" class="btn btn-primary">SAVE APPOINTMENT</button>
+            </div>
+        </div>
+     </div>
+    <input type="hidden" name="appointmentID" value="@Model.CurrentCleaningAppDemo.AppointmentId" />
+</form>
+
